@@ -52,7 +52,7 @@ app.listen(PORT, () => {
       .then(res => res.text())
       .then(data => console.log(`Self-ping: ${data}`))
       .catch(err => console.error("Self-ping failed:", err));
-  }, 1000 * 60 * 10);
+  }, 1000 * 60 * 5);
 
 });
 
