@@ -1,20 +1,23 @@
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
+const dotenv = require("dotenv");
 const { swaggerUi, specs } = require("./Swagger");
 
+dotenv.config();
+
 const app = express();
-const PORT = 8081;
+const PORT = process.env.APP_PORT || 8081;
 
 app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-  host: "sql12.freesqldatabase.com",
-  user: "sql12773505",
-  password: "RIfhJtUX3A",
-  database: "sql12773505",
-});
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+  });
 
 db.connect((err) => {
   if (err) {
